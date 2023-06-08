@@ -7,8 +7,7 @@ const LinkedList = () => {
   const append = (value) => {
     // set next value to null
     if (!head) {
-      linkedList = node(value);
-      size += 1;
+      createFirstNode(value);
       return;
     }
     traverse(linkedList, value);
@@ -18,9 +17,7 @@ const LinkedList = () => {
   const prepend = (value) => {
     // set next value to null
     if (!head) {
-      linkedList = node(value);
-      head = linkedList;
-      size += 1;
+      createFirstNode(value);
       return;
     }
     linkedList = node(value, linkedList);
@@ -35,6 +32,12 @@ const LinkedList = () => {
       return;
     }
     traverse(list.next, value);
+  }
+
+  function createFirstNode(value) {
+    linkedList = node(value);
+    head = node(value);
+    size += 1;
   }
 
   return {
