@@ -6,7 +6,7 @@ const LinkedList = () => {
 
   const append = (value) => {
     // set next value to null
-    if (isObjectEmpty()) {
+    if (!head) {
       linkedList = node(value);
       size += 1;
       return;
@@ -17,7 +17,7 @@ const LinkedList = () => {
 
   const prepend = (value) => {
     // set next value to null
-    if (isObjectEmpty()) {
+    if (!head) {
       linkedList = node(value);
       head = linkedList;
       size += 1;
@@ -35,10 +35,6 @@ const LinkedList = () => {
       return;
     }
     traverse(list.next, value);
-  }
-
-  function isObjectEmpty() {
-    return !Object.keys(linkedList).length;
   }
 
   return {
