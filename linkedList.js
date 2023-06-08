@@ -2,7 +2,8 @@ const LinkedList = () => {
   let linkedList = {};
 
   const append = (value) => {
-    if (!Object.keys(linkedList).length) {
+    // set next value to null
+    if (isObjectEmpty()) {
       linkedList = node(value);
       return;
     }
@@ -10,11 +11,25 @@ const LinkedList = () => {
   };
 
   const prepend = (value) => {
-    if (!Object.keys(linkedList).length) {
+    // set next value to null
+    if (isObjectEmpty()) {
       linkedList = node(value);
       return;
     }
     linkedList = node(value, linkedList);
+  };
+
+  const size = () => {
+    if (isObjectEmpty()) {
+      return 0;
+    }
+
+    let sum = 1;
+    while (linkedList.next) {
+      linkedList = linkedList.next;
+      sum += 1;
+    }
+    return sum;
   };
 
   function traverse(list, value) {
@@ -25,9 +40,14 @@ const LinkedList = () => {
     traverse(list.next, value);
   }
 
+  function isObjectEmpty() {
+    return !Object.keys(linkedList).length;
+  }
+
   return {
     append,
     prepend,
+    size,
     get list() {
       return linkedList;
     },
@@ -48,3 +68,4 @@ newLinkedList.prepend(0);
 newLinkedList.append(5);
 newLinkedList.append(8);
 console.log(newLinkedList.list);
+console.log(newLinkedList.size());
