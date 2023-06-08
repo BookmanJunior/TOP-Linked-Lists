@@ -2,14 +2,17 @@ const LinkedList = () => {
   let linkedList = {};
   let head;
   let tail;
+  let size = 0;
 
   const append = (value) => {
     // set next value to null
     if (isObjectEmpty()) {
       linkedList = node(value);
+      size += 1;
       return;
     }
     traverse(linkedList, value);
+    size += 1;
   };
 
   const prepend = (value) => {
@@ -17,23 +20,12 @@ const LinkedList = () => {
     if (isObjectEmpty()) {
       linkedList = node(value);
       head = linkedList;
+      size += 1;
       return;
     }
     linkedList = node(value, linkedList);
     head = node(value);
-  };
-
-  const size = () => {
-    if (isObjectEmpty()) {
-      return 0;
-    }
-
-    let sum = 1;
-    while (linkedList.next) {
-      linkedList = linkedList.next;
-      sum += 1;
-    }
-    return sum;
+    size += 1;
   };
 
   function traverse(list, value) {
@@ -52,7 +44,6 @@ const LinkedList = () => {
   return {
     append,
     prepend,
-    size,
     get list() {
       return linkedList;
     },
@@ -61,6 +52,9 @@ const LinkedList = () => {
     },
     get tail() {
       return tail;
+    },
+    get size() {
+      return size;
     },
   };
 };
@@ -79,6 +73,6 @@ newLinkedList.prepend(0);
 newLinkedList.append(5);
 newLinkedList.append(8);
 console.log(newLinkedList.list);
-console.log(newLinkedList.size());
+console.log(newLinkedList.size);
 console.log(newLinkedList.head);
 console.log(newLinkedList.tail);
