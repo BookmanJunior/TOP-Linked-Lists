@@ -25,6 +25,8 @@ const LinkedList = () => {
     size += 1;
   };
 
+  const at = (index) => getValue(linkedList, index);
+
   function traverse(list, value) {
     if (!list.next) {
       list.next = node(value);
@@ -40,9 +42,21 @@ const LinkedList = () => {
     size += 1;
   }
 
+  function getValue(list, index, i = 1) {
+    if (index > size) {
+      return `Value at index ${index} doesn't exist`;
+    }
+    if (index === i) {
+      return list.value;
+    }
+    i += 1;
+    return getValue(list.next, index, i);
+  }
+
   return {
     append,
     prepend,
+    at,
     get list() {
       return linkedList;
     },
@@ -75,3 +89,4 @@ console.log(newLinkedList.list);
 console.log(newLinkedList.size);
 console.log(newLinkedList.head);
 console.log(newLinkedList.tail);
+console.log(newLinkedList.at(3));
