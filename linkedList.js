@@ -29,6 +29,8 @@ const LinkedList = () => {
 
   const contains = (value) => doesValueExist(linkedList, value);
 
+  const find = (value) => getIndex(linkedList, value);
+
   function traverse(list, value) {
     if (!list.next) {
       list.next = node(value);
@@ -44,7 +46,7 @@ const LinkedList = () => {
     size += 1;
   }
 
-  function getValue(list, index, i = 1) {
+  function getValue(list, index, i = 0) {
     if (index > size) {
       return `Value at index ${index} doesn't exist`;
     }
@@ -67,6 +69,19 @@ const LinkedList = () => {
     return false;
   }
 
+  function getIndex(list, value, index = 0) {
+    if (list.value === value) {
+      return index;
+    }
+
+    if (list.next) {
+      index += 1;
+      return getIndex(list.next, value, index);
+    }
+
+    return null;
+  }
+
   // function removeLastNode(list) {
   //   if (list.next) {
   //   }
@@ -77,6 +92,7 @@ const LinkedList = () => {
     prepend,
     at,
     contains,
+    find,
     get list() {
       return linkedList;
     },
@@ -105,9 +121,10 @@ newLinkedList.prepend(1);
 newLinkedList.prepend(0);
 newLinkedList.append(5);
 newLinkedList.append(8);
-console.log(newLinkedList.list);
-console.log(newLinkedList.size);
+// console.log(newLinkedList.list);
+// console.log(newLinkedList.size);
 // console.log(newLinkedList.head);
 // console.log(newLinkedList.tail);
-console.log(newLinkedList.at(3));
-console.log(newLinkedList.contains());
+// console.log(newLinkedList.at(0));
+// console.log(newLinkedList.contains());
+console.log(newLinkedList.find(1));
