@@ -31,6 +31,17 @@ const LinkedList = () => {
 
   const find = (value) => getIndex(linkedList, value);
 
+  const toString = (list = linkedList) => {
+    console.log(list.value);
+
+    if (!list.next) {
+      console.log(list.next);
+      return;
+    }
+
+    toString(list.next);
+  };
+
   function traverse(list, value) {
     if (!list.next) {
       list.next = node(value);
@@ -93,6 +104,7 @@ const LinkedList = () => {
     at,
     contains,
     find,
+    toString,
     get list() {
       return linkedList;
     },
@@ -127,4 +139,5 @@ newLinkedList.append(8);
 // console.log(newLinkedList.tail);
 // console.log(newLinkedList.at(0));
 // console.log(newLinkedList.contains());
-console.log(newLinkedList.find(1));
+// console.log(newLinkedList.find(1));
+newLinkedList.toString();
