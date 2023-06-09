@@ -49,7 +49,7 @@ const LinkedList = () => {
       return `Value at index ${index} doesn't exist`;
     }
     if (index === i) {
-      return list.value;
+      return list;
     }
     i += 1;
     return getValue(list.next, index, i);
@@ -109,5 +109,5 @@ console.log(newLinkedList.list);
 console.log(newLinkedList.size);
 // console.log(newLinkedList.head);
 // console.log(newLinkedList.tail);
-// console.log(newLinkedList.at(3));
+console.log(newLinkedList.at(3));
 console.log(newLinkedList.contains());
