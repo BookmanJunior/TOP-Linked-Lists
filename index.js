@@ -13,3 +13,4 @@ newLinkedList.append(8);
 // console.log(newLinkedList.contains());
 // console.log(newLinkedList.find(1));
 newLinkedList.toString();
+newLinkedList.pop();
