@@ -1,3 +1,5 @@
+import Node from "./node.js";
+
 const LinkedList = () => {
   let linkedList = {};
   let head;
@@ -20,8 +22,8 @@ const LinkedList = () => {
       createFirstNode(value);
       return;
     }
-    linkedList = node(value, linkedList);
-    head = node(value);
+    linkedList = Node(value, linkedList);
+    head = Node(value);
     size += 1;
   };
 
@@ -44,16 +46,16 @@ const LinkedList = () => {
 
   function traverse(list, value) {
     if (!list.next) {
-      list.next = node(value);
-      tail = node(value);
+      list.next = Node(value);
+      tail = Node(value);
       return;
     }
     traverse(list.next, value);
   }
 
   function createFirstNode(value) {
-    linkedList = node(value);
-    head = node(value);
+    linkedList = Node(value);
+    head = Node(value);
     size += 1;
   }
 
@@ -93,11 +95,6 @@ const LinkedList = () => {
     return null;
   }
 
-  // function removeLastNode(list) {
-  //   if (list.next) {
-  //   }
-  // }
-
   return {
     append,
     prepend,
@@ -120,24 +117,4 @@ const LinkedList = () => {
   };
 };
 
-function node(value = null, next = null) {
-  return {
-    value,
-    next,
-  };
-}
-
-// testing
-const newLinkedList = LinkedList();
-newLinkedList.prepend(1);
-newLinkedList.prepend(0);
-newLinkedList.append(5);
-newLinkedList.append(8);
-// console.log(newLinkedList.list);
-// console.log(newLinkedList.size);
-// console.log(newLinkedList.head);
-// console.log(newLinkedList.tail);
-// console.log(newLinkedList.at(0));
-// console.log(newLinkedList.contains());
-// console.log(newLinkedList.find(1));
-newLinkedList.toString();
+export default LinkedList;
