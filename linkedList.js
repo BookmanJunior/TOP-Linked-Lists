@@ -44,6 +44,16 @@ const LinkedList = () => {
     toString(list.next);
   };
 
+  const pop = () => {
+    removeNode(linkedList);
+  };
+
+  function createFirstNode(value) {
+    linkedList = Node(value);
+    head = Node(value);
+    size += 1;
+  }
+
   function traverse(list, value) {
     if (!list.next) {
       list.next = Node(value);
@@ -51,12 +61,6 @@ const LinkedList = () => {
       return;
     }
     traverse(list.next, value);
-  }
-
-  function createFirstNode(value) {
-    linkedList = Node(value);
-    head = Node(value);
-    size += 1;
   }
 
   function getValue(list, index, i = 0) {
@@ -68,6 +72,15 @@ const LinkedList = () => {
     }
     i += 1;
     return getValue(list.next, index, i);
+  }
+
+  function removeNode(list, prev = null) {
+    if (!list.next) {
+      prev.next = null;
+      return;
+    }
+    prev = list;
+    removeNode(list.next, prev);
   }
 
   function doesValueExist(list, value) {
@@ -99,6 +112,7 @@ const LinkedList = () => {
     append,
     prepend,
     at,
+    pop,
     contains,
     find,
     toString,
